@@ -152,7 +152,7 @@ Start vite:
 @vite(['resources/css/app.scss', 'resources/js/app.js'])
 ```
 
-Delete everything in the body tag and add the following:
+2. Delete everything in the body tag and add the following:
 
 ```html
 <body class="test">
@@ -160,7 +160,7 @@ Delete everything in the body tag and add the following:
 </body>
 ```
 
-Add the following to the app.scss file:
+3. Add the following to the app.scss file:
 
 ```scss
 HTML,
