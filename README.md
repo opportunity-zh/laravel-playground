@@ -1,66 +1,183 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Start a new Laravel project
 
-## About Laravel
+Small exercises to learn the basics of Laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   [ ] Create a new Laravel project
+-   [ ] Add Sass to the project
+-   [ ] Add Bootstrap to the project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# How to run this project
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Install Laravel
 
-## Learning Laravel
+```bash
+composer create-project laravel/laravel project-name
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Install Sail (Docker)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Docs: https://laravel.com/docs/10.x/sail
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Add Sail to the project
 
-## Laravel Sponsors
+```bash
+composer require laravel/sail --dev
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### Install Sails
 
-### Premium Partners
+```bash
+php artisan sail:install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+#### Run Sails
 
-## Contributing
+```bash
+./vendor/bin/sail up
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Problem solving
 
-## Code of Conduct
+Folder permission issues:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+sudo chmod 777 -R .
+```
 
-## Security Vulnerabilities
+Docker not running permission issues:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+sudo chmod 666 /var/run/docker.sock
+```
 
-## License
+Docker not running:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+sudo systemctl start docker
+```
+
+Docker not running after restart:
+
+```bash
+sudo systemctl enable docker
+```
+
+#### Port 3306 already in use
+
+Error starting userland proxy: listen tcp4 0.0.0.0:3306: bind: address already in use.
+
+Check what is using port 3306:
+
+```bash
+sudo netstat -nlpt |grep 3306
+```
+
+Stop the service using port 3306:
+
+```bash
+sudo systemctl stop mysql
+```
+
+### Add phpMyAdmin
+
+Add the following to the docker-compose.yml file, below the mysql service. Make sure to indent correctly.
+It should be on the same level as the mysql service:
+
+```
+    phpmyadmin:
+        image: "phpmyadmin:latest"
+        ports:
+            - 8080:80
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+        depends_on:
+            mysql:
+                condition: service_healthy
+        networks:
+            - sail
+```
+
+You find the database credentials in the .env file in the project root.
+
+### Add Sass
+
+Docs: https://laravel.com/docs/10.x/vite#installing-node
+
+Check Node version with sail:
+
+```bash
+./vendor/bin/sail node -v
+```
+
+#### Install Sass:
+
+```bash
+./vendor/bin/sail npm add -D sass
+```
+
+#### Setup Sass:
+
+1. Go to resources/css/app.css and change the file extension to .scss `resources/css/app.scss`.
+2. Update the file name in the vite.config.js file:
+
+```js
+import { defineConfig } from "vite";
+import laravel from "laravel-vite-plugin";
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ["resources/css/app.scss", "resources/js/app.js"],
+            refresh: true,
+        }),
+    ],
+});
+```
+
+Start vite:
+
+```bash
+./vendor/bin/sail npm run dev
+```
+
+#### Test Sass
+
+1. Go to the main view file "./resources/views/welcome.blade.php".
+   Delete the styles and add the follwoing instead:
+
+```html
+@vite(['resources/css/app.scss', 'resources/js/app.js'])
+```
+
+Delete everything in the body tag and add the following:
+
+```html
+<body class="test">
+    <h1>Hello World</h1>
+</body>
+```
+
+Add the following to the app.scss file:
+
+```scss
+HTML,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    height: 100vh;
+}
+.test {
+    background-color: red;
+
+    .inner {
+        height: 200%;
+        width: 100%;
+        background-color: blue;
+    }
+}
+```
