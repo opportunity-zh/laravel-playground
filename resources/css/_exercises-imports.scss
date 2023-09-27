@@ -7,7 +7,7 @@ $primary-color: #3498db;
 $heading-font-size: 24px;
 
 // In your main SCSS file, import the configuration file and use its variables for styling.
-@import "_config";
+// @import "_csonfig";
 
 h1 {
     color: $primary-color;
@@ -25,7 +25,7 @@ h1 {
 }
 
 // In main SCSS file, import the module files and use the styles for your webpage.
-@import "_buttons";
+// @import "_buttons";
 
 .header {
     .button {
@@ -44,7 +44,7 @@ h1 {
 }
 
 // In main SCSS file, import the partial files and use their styles.
-@import "header";
+// @import "header";
 
 /* Exercise 4: Organizing with Directories */
 // Create a directory structure for your SCSS files.
@@ -57,7 +57,7 @@ h1 {
 }
 
 // In main.scss, import the component files and use their styles.
-@import "components/buttons";
+// @import "components/buttons";
 
 /* Exercise 5: Using Variables Across Imports */
 // Create multiple SCSS files, each with its own set of variables.
@@ -70,8 +70,8 @@ $primary-color: #3498db;
 $secondary-color: #e74c3c;
 
 // In main.scss, import both variable files and use their variables.
-@import "_variables1";
-@import "_variables2";
+// @import "_variables1";
+// @import "_variables2";
 
 h1 {
     color: $primary-color;
@@ -85,10 +85,10 @@ a {
 // Create a set of SCSS files for different themes, each with its own set of styles.
 // Use a conditional statement to import the appropriate theme file based on user preference.
 
-$dark-theme: true;
+// $dark-theme: true;
 
-@if $dark-theme {
-    @import "dark-theme";
-} @else {
-    @import "light-theme";
-}
+// @if $dark-theme {
+//     @import "dark-theme";
+// } @else {
+//     @import "light-theme";
+// }

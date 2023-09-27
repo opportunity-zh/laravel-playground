@@ -84,7 +84,8 @@ h1 {
 /* Exercise 7: Dark and Light Themes */
 // Create SCSS variables for colors and backgrounds in both dark and light themes.
 $dark-theme: true;
-
+$background-color: #fff;
+$text-color: #fff;
 // Use conditional statements to switch between themes.
 @if $dark-theme {
     $background-color: #222;
