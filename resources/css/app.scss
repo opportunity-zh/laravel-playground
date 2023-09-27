@@ -6,12 +6,4 @@ body {
     overflow-x: hidden;
     height: 100vh;
 }
-.test {
-    background-color: red;
-
-    .inner {
-        height: 200%;
-        width: 100%;
-        background-color: blue;
-    }
-}
+@import "welcome";
