@@ -1,0 +1,136 @@
+/* Exercise 1: Basic Variables */
+// Create a SCSS variable called $main-font and set it to "Arial, sans-serif".
+$main-font: "Arial, sans-serif";
+
+// Use this variable to set the font-family property for the entire body.
+body {
+    font-family: $main-font;
+}
+
+/* Exercise 2: Color Variables */
+// Define SCSS variables for the following colors: primary, secondary, and accent.
+$primary-color: #3498db;
+$secondary-color: #e74c3c;
+$accent-color: #f39c12;
+
+// Use these variables to style headings, links, and buttons.
+h1 {
+    color: $primary-color;
+}
+
+a {
+    color: $secondary-color;
+}
+
+.button {
+    background-color: $accent-color;
+}
+
+/* Exercise 3: Font Size Variables */
+// Create SCSS variables for font sizes: heading and paragraph.
+$heading-font-size: 24px;
+$paragraph-font-size: 16px;
+
+// Use these variables to set the font sizes for headings and paragraphs.
+h1 {
+    font-size: $heading-font-size;
+}
+
+p {
+    font-size: $paragraph-font-size;
+}
+
+/* Exercise 4: Spacing Variables */
+// Define SCSS variables for spacing: small, medium, and large.
+$padding-small: 5px;
+$padding-medium: 10px;
+$padding-large: 20px;
+
+// Use these variables to set padding on different elements.
+.button {
+    padding: $padding-small;
+}
+
+.box {
+    padding: $padding-medium;
+}
+
+/* Exercise 5: Responsive Breakpoints */
+// Create SCSS variables for responsive breakpoints: mobile and tablet.
+$mobile-breakpoint: 768px;
+$tablet-breakpoint: 1024px;
+
+// Use these variables to set media queries that adjust the layout at those breakpoints.
+@media (max-width: $mobile-breakpoint) {
+    /* Mobile styles here */
+}
+
+@media (min-width: $tablet-breakpoint) {
+    /* Tablet styles here */
+}
+
+/* Exercise 6: Variable Overrides */
+// Define a set of default SCSS variables for a theme (e.g., primary color).
+$primary-color: #3498db;
+
+// Create a secondary theme by overriding these variables with different values.
+$primary-color: #e74c3c;
+
+// Use the secondary theme color in your styles.
+h1 {
+    color: $primary-color;
+}
+
+/* Exercise 7: Dark and Light Themes */
+// Create SCSS variables for colors and backgrounds in both dark and light themes.
+$dark-theme: true;
+
+// Use conditional statements to switch between themes.
+@if $dark-theme {
+    $background-color: #222;
+    $text-color: #fff;
+} @else {
+    $background-color: #fff;
+    $text-color: #222;
+}
+
+// Apply the theme-specific colors and backgrounds to your styles.
+body {
+    background-color: $background-color;
+    color: $text-color;
+}
+/* Exercise 5: Responsive Breakpoints */
+// Create SCSS variables for responsive breakpoints: mobile and tablet.
+$mobile-breakpoint: 768px;
+$tablet-breakpoint: 1024px;
+
+// Use these variables to set media queries that adjust the layout at those breakpoints.
+@media (max-width: $mobile-breakpoint) {
+    /* Mobile styles here */
+}
+
+@media (min-width: $tablet-breakpoint) {
+    /* Tablet styles here */
+}
+
+/* Exercise 8: Variable Calculations */
+// Define SCSS variables for width and padding.
+$width: 200px;
+$padding: 20px;
+
+// Calculate the total width of an element by adding width and padding values together.
+.box {
+    width: $width + 2 * $padding;
+    padding: $padding;
+}
+
+/* Exercise 9: Variable Interpolation */
+// Define SCSS variables for font size and line height.
+$font-size: 16px;
+$line-height: 1.5;
+
+// Use variable interpolation to set the line-height property to 1.5 times the font size.
+p {
+    font-size: $font-size;
+    line-height: $font-size * $line-height;
+}

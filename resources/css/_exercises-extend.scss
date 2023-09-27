@@ -1,0 +1,100 @@
+/* Exercise 1: Extending Placeholder Selectors */
+// Create a placeholder selector `%text-style` with common text styles (e.g., font-family, color).
+// Use the `@extend` directive to apply this placeholder to different elements.
+
+%text-style {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.heading {
+    @extend %text-style;
+}
+
+.paragraph {
+    @extend %text-style;
+}
+
+/* Exercise 2: Extending Placeholder Selectors with Overrides */
+// Create a placeholder selector `%button-style` with button styles.
+// Use the `@extend` directive to apply this placeholder to different button elements.
+// Override specific properties for individual buttons.
+
+%button-style {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.primary-button {
+    @extend %button-style;
+}
+
+.secondary-button {
+    @extend %button-style;
+    background-color: #e74c3c;
+}
+
+/* Exercise 3: Extending Nested Selectors */
+// Create a placeholder selector `%container` with styles for a container element.
+// Nest other elements within the container and use `@extend` to apply the container styles.
+
+%container {
+    background-color: #f0f0f0;
+    padding: 20px;
+
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+.content {
+    @extend %container;
+}
+
+.sidebar {
+    @extend %container;
+    background-color: #333;
+}
+
+/* Exercise 4: Extending Multiple Placeholders */
+// Create two placeholder selectors `%text-style` and `%highlight` with different styles.
+// Use the `@extend` directive to apply both placeholders to a single element.
+
+%text-style {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+%highlight {
+    background-color: #ffff00;
+    color: #333;
+}
+
+.alert {
+    @extend %text-style, %highlight;
+}
+
+/* Exercise 5: Extending with Media Queries */
+// Create a placeholder selector `%responsive-container` with styles for a responsive container.
+// Use `@media` queries and `@extend` to apply responsive styles to different screen sizes.
+
+%responsive-container {
+    padding: 20px;
+
+    @media (max-width: 768px) {
+        padding: 10px;
+    }
+}
+
+.mobile-content {
+    @extend %responsive-container;
+}
+
+.desktop-content {
+    @extend %responsive-container;
+}

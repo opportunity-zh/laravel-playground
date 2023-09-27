@@ -1,0 +1,94 @@
+/* Exercise 1: Importing a Configuration File */
+// Create an SCSS file that imports a configuration file.
+// The configuration file (_config.scss) contains variables for fonts, colors, and more.
+
+// In _config.scss file:
+$primary-color: #3498db;
+$heading-font-size: 24px;
+
+// In your main SCSS file, import the configuration file and use its variables for styling.
+@import "_config";
+
+h1 {
+    color: $primary-color;
+    font-size: $heading-font-size;
+}
+
+/* Exercise 2: Importing Modules */
+// Create an SCSS file that imports separate module files for different components.
+// Each module file defines styles for a specific component (e.g., buttons, cards).
+
+// In _buttons.scss module:
+.button {
+    background-color: #3498db;
+    color: #fff;
+}
+
+// In main SCSS file, import the module files and use the styles for your webpage.
+@import "_buttons";
+
+.header {
+    .button {
+        // Use button styles here
+    }
+}
+
+/* Exercise 3: Partial Imports */
+// Create an SCSS file that imports partial SCSS files (files starting with an underscore).
+// Partial files typically contain specific sets of styles or variables.
+
+// In _header.scss partial:
+.header {
+    background-color: #333;
+    color: #fff;
+}
+
+// In main SCSS file, import the partial files and use their styles.
+@import "header";
+
+/* Exercise 4: Organizing with Directories */
+// Create a directory structure for your SCSS files.
+// Organize files into subdirectories based on components or sections of your website.
+
+// In components/_buttons.scss:
+.button {
+    background-color: #3498db;
+    color: #fff;
+}
+
+// In main.scss, import the component files and use their styles.
+@import "components/buttons";
+
+/* Exercise 5: Using Variables Across Imports */
+// Create multiple SCSS files, each with its own set of variables.
+// Import these files into a main SCSS file and use variables defined across imports.
+
+// In _variables1.scss:
+$primary-color: #3498db;
+
+// In _variables2.scss:
+$secondary-color: #e74c3c;
+
+// In main.scss, import both variable files and use their variables.
+@import "_variables1";
+@import "_variables2";
+
+h1 {
+    color: $primary-color;
+}
+
+a {
+    color: $secondary-color;
+}
+
+/* Exercise 6: Conditional Imports */
+// Create a set of SCSS files for different themes, each with its own set of styles.
+// Use a conditional statement to import the appropriate theme file based on user preference.
+
+$dark-theme: true;
+
+@if $dark-theme {
+    @import "dark-theme";
+} @else {
+    @import "light-theme";
+}

@@ -1,0 +1,102 @@
+/* Exercise 1: Creating and Using Mixins */
+// Create a SCSS mixin called "box-shadow" that sets a box shadow with specified parameters.
+// Use the mixin to apply box shadows to different elements.
+
+@mixin box-shadow($x, $y, $blur, $color) {
+    box-shadow: $x $y $blur $color;
+}
+
+.button {
+    @include box-shadow(2px, 2px, 4px, rgba(0, 0, 0, 0.2));
+}
+
+.card {
+    @include box-shadow(0, 0, 8px, rgba(0, 0, 0, 0.4));
+}
+
+/* Exercise 2: Mixin with Default Values */
+// Create a SCSS mixin called "button" for styling buttons.
+// Provide default values for button background color, text color, and padding.
+
+@mixin button($bg-color: #3498db, $text-color: #fff, $padding: 10px) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: $padding;
+}
+
+.primary-button {
+    @include button;
+}
+
+.secondary-button {
+    @include button(#e74c3c, #fff, 15px);
+}
+
+/* Exercise 3: Mixin with Arguments */
+// Create a SCSS mixin called "flex" that sets display to flex and provides flexibility options.
+// Use the mixin to define flexible layouts for elements.
+
+@mixin flex($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+.header {
+    @include flex(row, space-between, center);
+}
+
+.sidebar {
+    @include flex(column, flex-start, center);
+}
+
+/* Exercise 4: Mixin for Vendor Prefixes */
+// Create a SCSS mixin called "transition" that adds vendor-prefixed transition properties.
+// Use the mixin to apply transitions to elements.
+
+@mixin transition($property, $duration) {
+    -webkit-transition: #{$property} $duration;
+    -moz-transition: #{$property} $duration;
+    -o-transition: #{$property} $duration;
+    transition: #{$property} $duration;
+}
+
+.button {
+    @include transition(all, 0.3s);
+}
+
+/* Exercise 5: Mixin for Responsive Typography */
+// Create a SCSS mixin called "responsive-font-size" that adjusts font size based on screen size.
+// Use the mixin to create responsive typography.
+
+@mixin responsive-font-size($min-size, $max-size, $min-width, $max-width) {
+    font-size: $min-size;
+    @media (min-width: $min-width) {
+        font-size: calc(
+            #{$min-size} + (#{$max-size} - #{$min-size}) * ((
+                            100vw - #{$min-width}
+                        ) / (#{$max-width} - #{$min-width}))
+        );
+    }
+}
+
+h1 {
+    @include responsive-font-size(24px, 32px, 320px, 1200px);
+}
+
+/* Exercise 6: Mixin for Gradients */
+// Create a SCSS mixin called "gradient" that generates linear gradients.
+// Use the mixin to style background gradients for elements.
+
+@mixin gradient($start-color, $end-color) {
+    background: linear-gradient(to bottom, $start-color, $end-color);
+}
+
+.header {
+    @include gradient(#3498db, #e74c3c);
+}
+
+.button {
+    @include gradient(#2ecc71, #27ae60);
+}

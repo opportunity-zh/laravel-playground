@@ -1,0 +1,148 @@
+/* Exercise 1: Nesting Basics */
+// Create an SCSS file with a nesting structure for a navigation menu.
+// Nest the ul and li elements within the appropriate selectors.
+// Use classes for styling.
+
+.navbar {
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    }
+}
+
+/* Exercise 2: Parent Selector (&) */
+// Create an SCSS file with a basic nesting structure.
+// Use the parent selector (&) to style anchor tags within a specific container.
+// Apply different styles for anchor tags and their hover states.
+
+.container {
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+/* Exercise 3: Nested Modifiers */
+// Create an SCSS file with a nested structure for styling buttons.
+// Use nesting to define styles for button sizes and colors.
+
+.button {
+    &.small {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    &.large {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+
+    &.primary {
+        background-color: #3498db;
+        color: #fff;
+
+        &:hover {
+            background-color: #2980b9;
+        }
+    }
+}
+
+/* Exercise 4: Nested Pseudo-Classes */
+// Create an SCSS file with a nested structure for styling form elements.
+// Use nesting to define styles for input and label elements, including pseudo-classes.
+
+.form {
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        border: 1px solid #ccc;
+
+        &:focus {
+            border-color: #3498db;
+        }
+    }
+}
+
+/* Exercise 5: Media Queries and Nesting */
+// Create an SCSS file with nested media queries.
+// Define styles for different screen sizes by nesting within media queries.
+
+@media (max-width: 768px) {
+    .header {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        font-size: 24px;
+    }
+}
+
+/* Exercise 6: Nested Hover Effects */
+// Create an SCSS file with a nested structure for creating hover effects.
+// Use nesting to define styles for anchor tags and their hover states.
+
+.navbar {
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+/* Exercise 7: Nested Selectors in Grid Layout */
+// Create an SCSS file that uses nesting to define styles for a grid layout.
+// Nest selectors for rows and columns within the grid.
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+
+        .col {
+            flex: 1;
+            margin: 10px;
+        }
+    }
+}
+
+/* Exercise 8: Nesting in a Component */
+// Create an SCSS file that represents a reusable component.
+// Use nesting to style the component's various elements.
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+    .header {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .content {
+        margin-top: 10px;
+
+        p {
+            line-height: 1.5;
+        }
+    }
+}
+
+
