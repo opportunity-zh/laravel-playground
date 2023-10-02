@@ -238,3 +238,27 @@ body {
 ```
 # Sass exercises
 
+
+# Install Breeze
+1. At first we need to add the breeze package with composer.
+```bash
+sail composer require laravel/breeze --dev
+```
+2. Then we need to generate all files and routes
+```bash
+sail artisan breeze:install
+```
+3. After that we need to migrate, to create all the tables
+```bash
+sail artisan migrate
+```
+4. We also have to install the node packages
+```bash
+sail npm install
+```
+5. Node Server starten
+```bash
+sail npm run dev
+```
+
+
