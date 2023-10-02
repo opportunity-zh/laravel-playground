@@ -241,6 +241,9 @@ body {
 
 
 # Install Breeze
+Laravel Breeze ist ein Firstparty Package von Laravel und hilft Dir bei der Authentifizierung von Usern in Deiner Applikation.
+Das Package stellt bereits die grundlegendsten Funktionen inkl. einer UI zur Verfügung.[Mehr erfahren](https://laravel.com/docs/10.x/starter-kits#laravel-breeze)
+
 1. At first we need to add the breeze package with composer.
 ```bash
 sail composer require laravel/breeze --dev
