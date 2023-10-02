@@ -32,6 +32,7 @@ Small exercises to learn the basics of Laravel.
         -   [Setup Sass:](#setup-sass)
         -   [Test Sass](#test-sass)
 -   [Sass exercises](#sass-exercises)
+-   [Install Laravel Breeze](#install-breeze)
 
 # Composer and NPM Packages
 
